@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logg inn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Helgomega</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="login.html">Logg inn</a></li>
+                <li><a href="contact.html">Kontakt</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Logg inn</h2>
+        <form id="loginForm">
+            <label for="username">Brukernavn:</label>
+            <input type="text" id="username" required>
+            
+            <label for="password">Passord:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Logg inn</button>
+        </form>
+
+        <p id="loginError" style="color: red;"></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
