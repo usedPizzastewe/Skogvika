@@ -43,3 +43,22 @@ div.innerHTML = `
 container.appendChild(div);
 });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const brukerDiv = document.getElementById("brukernavn-visning");
+    const lagretBruker = localStorage.getItem("innloggetBruker");
+
+    if (brukerDiv) {
+        if (lagretBruker) {
+            try {
+                const bruker = JSON.parse(lagretBruker);
+                brukerDiv.textContent = `Logget inn som: ${bruker.brukernavn}`;
+            } catch (e) {
+                console.error("Kunne ikke lese bruker fra localStorage");
+                brukerDiv.textContent = "Ingen konto";
+            }
+        } else {
+            brukerDiv.textContent = "Ingen konto";
+        }
+    }
+});

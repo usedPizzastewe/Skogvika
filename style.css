@@ -183,3 +183,15 @@ footer {
     color: #333;             /* Farge på teksten */
     margin: 0;               /* Fjerner margin rundt h2 */
 }
+
+
+.brukernavn-visning {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #005bbb;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
