@@ -62,3 +62,54 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const brukernavn = document.getElementById("username").value;
+        const passord = document.getElementById("password").value;
+
+        fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ brukernavn, passord })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem("innloggetBruker", data.brukernavn);
+                window.location.href = "index.html"; // Gå til hovedsiden
+            } else {
+                document.getElementById("loginError").textContent = data.error || "Innlogging feilet";
+            }
+        })
+        .catch(err => {
+            console.error("Innloggingsfeil:", err);
+            document.getElementById("loginError").textContent = "En feil oppsto ved innlogging";
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const visning = document.getElementById("brukernavn-visning");
+    const logoutButton = document.getElementById("logoutButton");
+    const bruker = localStorage.getItem("innloggetBruker");
+
+    if (visning) {
+        visning.textContent = bruker ? `Logget inn som: ${bruker}` : "Ingen konto";
+    }
+
+    if (logoutButton) {
+        logoutButton.style.display = bruker ? "block" : "none";
+
+        logoutButton.addEventListener("click", () => {
+            localStorage.removeItem("innloggetBruker");
+            window.location.href = "login.html";
+        });
+    }
+});
+

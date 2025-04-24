@@ -66,40 +66,24 @@ app.listen(port, () => {
     console.log(`Serveren kjører på http://localhost:${port}`);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
+// POST: Logg inn bruker
+app.post('/login', (req, res) => {
+    const { brukernavn, passord } = req.body;
 
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const brukernavn = document.getElementById("username").value;
-            const passord = document.getElementById("password").value;
-
-            fetch("http://localhost:5500/login.html", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ brukernavn, passord }),
-            })
-            .then(res => res.json())
-            .then(data => {
-                const loginError = document.getElementById("loginError");
-
-                if (data.bruker) {
-                    // Lagre innlogget bruker i localStorage
-                    localStorage.setItem("innloggetBruker", JSON.stringify(data.bruker));
-                    // Send bruker til min side
-                    window.location.href = "minside.html";
-                } else {
-                    loginError.textContent = data.error || "Feil brukernavn eller passord";
-                }
-            })
-            .catch(err => {
-                console.error("Innloggingsfeil:", err);
-                document.getElementById("loginError").textContent = "Innlogging feilet. Prøv igjen senere.";
-            });
-        });
+    if (!brukernavn || !passord) {
+        return res.status(400).json({ error: "Brukernavn og passord må fylles ut" });
     }
+
+    const sql = `SELECT * FROM brukere WHERE brukernavn = ? AND passord = ?`;
+    db.get(sql, [brukernavn, passord], (err, row) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+
+        if (!row) {
+            return res.status(401).json({ error: "Feil brukernavn eller passord" });
+        }
+
+        res.json({ success: true, brukernavn: row.brukernavn });
+    });
 });
