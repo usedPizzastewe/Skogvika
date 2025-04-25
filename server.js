@@ -67,7 +67,6 @@ app.post('/bruker', async (req, res) => {
     }
 });
 
-
 // Start serveren
 app.listen(port, () => {
     console.log(`Serveren kjører på http://localhost:${port}`);
@@ -88,7 +87,7 @@ app.post('/login', (req, res) => {
         }
 
         if (!row) {
-            return res.status(401).json({ error: "Feil brukernavn eller passord" });
+            return res.status(401).json({ error: "Hei1, Feil brukernavn eller passord" });
         }
 
         try {
@@ -96,7 +95,7 @@ app.post('/login', (req, res) => {
             if (match) {
                 res.json({ success: true, brukernavn: row.brukernavn });
             } else {
-                res.status(401).json({ error: "Feil brukernavn eller passord" });
+                res.status(401).json({ error: "Hei2, Feil brukernavn eller passord" });
             }
         } catch (error) {
             res.status(500).json({ error: "Noe gikk galt ved sjekking av passord" });
