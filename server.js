@@ -1,6 +1,9 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 const app = express();
 const cors = require('cors');
@@ -43,23 +46,27 @@ app.get('/kjop/biler', (req, res) => {
 });
 
 // POST: Registrer bruker
-app.post('/bruker', (req, res) => {
-    console.log("Mottatt body:", req.body); // 📌 Feilsøking
-
+app.post('/bruker', async (req, res) => {
     const { brukernavn, passord, email } = req.body;
 
     if (!brukernavn || !passord || !email) {
         return res.status(400).json({ error: "Alle felt må fylles ut" });
     }
 
-    const sql = `INSERT INTO brukere (brukernavn, passord, email) VALUES (?, ?, ?)`;
-    db.run(sql, [brukernavn, passord, email], function(err) {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.json({ id: this.lastID });
-    });
+    try {
+        const hashedPassword = await bcrypt.hash(passord, saltRounds);
+        const sql = `INSERT INTO brukere (brukernavn, passord, email) VALUES (?, ?, ?)`;
+        db.run(sql, [brukernavn, hashedPassword, email], function(err) {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            res.json({ id: this.lastID });
+        });
+    } catch (error) {
+        res.status(500).json({ error: "Noe gikk galt med kryptering" });
+    }
 });
+
 
 // Start serveren
 app.listen(port, () => {
@@ -74,8 +81,8 @@ app.post('/login', (req, res) => {
         return res.status(400).json({ error: "Brukernavn og passord må fylles ut" });
     }
 
-    const sql = `SELECT * FROM brukere WHERE brukernavn = ? AND passord = ?`;
-    db.get(sql, [brukernavn, passord], (err, row) => {
+    const sql = `SELECT * FROM brukere WHERE brukernavn = ?`;
+    db.get(sql, [brukernavn], async (err, row) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -84,6 +91,15 @@ app.post('/login', (req, res) => {
             return res.status(401).json({ error: "Feil brukernavn eller passord" });
         }
 
-        res.json({ success: true, brukernavn: row.brukernavn });
+        try {
+            const match = await bcrypt.compare(passord, row.passord);
+            if (match) {
+                res.json({ success: true, brukernavn: row.brukernavn });
+            } else {
+                res.status(401).json({ error: "Feil brukernavn eller passord" });
+            }
+        } catch (error) {
+            res.status(500).json({ error: "Noe gikk galt ved sjekking av passord" });
+        }
     });
 });

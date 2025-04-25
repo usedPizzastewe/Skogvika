@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helgomega</title>
-    <div id="brukernavn-visning" class="brukernavn-visning"></div>
     <link rel="stylesheet" href="style.css">
-    
-
 </head>
 <body>
     <header>
@@ -19,31 +16,27 @@
                 <li><a href="contact.html">Kontakt</a></li>
             </ul>
         </nav>
+
+        <!-- Brukernavn visning og logg ut knapp -->
+        <div id="bruker-info" class="bruker-info">
             <div id="brukernavn-visning" class="brukernavn-visning"></div>
-            
-    <div id="bruker-info" style="text-align: right; margin: 10px 20px 0 0;">
-        <div id="brukernavn-visning" class="brukernavn-visning" style="margin-bottom: 5px;"></div>
-        <button id="logoutButton" class="orange-button" style="display: none;">Logg ut</button>
-    </div>
-    
+            <button id="logoutButton" class="orange-button" style="display: none;">Logg ut</button>
+        </div>
     </header>
-    
+
     <main>
         <section class="intro">
             <h2>Velkommen til Helgomega</h2>
             <p>Vi tilbyr et bredt utvalg av biler og båter til konkurransedyktige priser.</p>
         </section>
     </main>
+
     <div class="våre-biler-container">
         <h2>Våre biler</h2>
     </div>
-    
-    <div id="bil-container"></div>
+
+    <div id="bil-container" class="bil-grid"></div>
+
     <script src="script.js"></script>
 </body>
-
-<section id="bil-container" class="bil-grid"></section>
-<div id="bil-container" class="bil-grid"></div>
-
-
 </html>
