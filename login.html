@@ -5,26 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logg inn</title>
     <link rel="stylesheet" href="style.css">
-   
-    
 </head>
 <body>
     <header>
         <h1>Helgomega</h1>
         <nav>
+            <!-- Meny med lenker -->
             <ul>
                 <li><a href="index.html">Hjem</a></li>
                 <li><a href="login.html">Logg inn</a></li>
-                <li><a href="contact.html">Kontakt</a></li> 
+                <li><a href="minside.html">Min side</a></li>
             </ul>
         </nav>
-        <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 10px;">
+
+        <div id="bruker-info" class="bruker-info">
+            <!-- Brukernavn og logg ut knapp oppe i hjørne -->
             <div id="brukernavn-visning" class="brukernavn-visning"></div>
             <button id="logoutButton" class="orange-button" style="display: none;">Logg ut</button>
         </div>
     </header>
 
     <main>
+        <!-- Form for innlogging -->
         <h2>Logg inn</h2>
         <form id="loginForm">
             <label for="username">Brukernavn:</label>
@@ -36,9 +38,11 @@
             <button type="submit">Logg inn</button>
         </form>
 
+        <!-- Vis feilmelding -->
         <p id="loginError" style="color: red;"></p>
     </main>
 
+    <!-- Koble til script.js -->
     <script src="script.js"></script>
 </body>
 </html>

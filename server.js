@@ -1,20 +1,18 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const express = require('express'); // Lager server
+const sqlite3 = require('sqlite3').verbose(); // Database
+const bodyParser = require('body-parser'); // Leser data
+const bcrypt = require('bcrypt'); // For kryptering
+const saltRounds = 10; // Krypteringsnivå
 
-
-const app = express();
+const app = express(); // Starter appen
 const cors = require('cors');
-app.use(cors()); // 🔓 Tillat forespørsler fra andre domener (som frontend)
-const port = 3000;
+app.use(cors()); // Tillat frontend
+const port = 3000; // Port
 
-// 📌 Viktig! Middleware for å håndtere JSON
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Bruk JSON
+app.use(express.urlencoded({ extended: true })); // Bruk skjema
 
-// Feilsøking: Logg innkommende forespørsler
+// Skriv ut alt som skjer
 app.use((req, res, next) => {
     console.log(`Mottatt ${req.method} forespørsel til ${req.url}`);
     console.log('Headers:', req.headers);
@@ -22,7 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Åpne databasen
+// Koble til databasen
 let db = new sqlite3.Database('./helgomega.db', (err) => {
     if (err) {
         console.error('Feil ved tilkobling til databasen:', err.message);
@@ -32,20 +30,20 @@ let db = new sqlite3.Database('./helgomega.db', (err) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Velkommen til Helgomega API!');
+    res.send('Velkommen til Helgomega API!'); // Enkel test
 });
 
 app.get('/kjop/biler', (req, res) => {
-    const sql = `SELECT * FROM biler`;
+    const sql = `SELECT * FROM biler`; // Hent alle biler
     db.all(sql, [], (err, rows) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.json(rows);
+        res.json(rows); // Send tilbake biler
     });
 });
 
-// POST: Registrer bruker
+// Legg til ny bruker
 app.post('/bruker', async (req, res) => {
     const { brukernavn, passord, email } = req.body;
 
@@ -54,25 +52,25 @@ app.post('/bruker', async (req, res) => {
     }
 
     try {
-        const hashedPassword = await bcrypt.hash(passord, saltRounds);
+        const hashedPassword = await bcrypt.hash(passord, saltRounds); // Krypter passord
         const sql = `INSERT INTO brukere (brukernavn, passord, email) VALUES (?, ?, ?)`;
         db.run(sql, [brukernavn, hashedPassword, email], function(err) {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-            res.json({ id: this.lastID });
+            res.json({ id: this.lastID }); // Send tilbake ID
         });
     } catch (error) {
         res.status(500).json({ error: "Noe gikk galt med kryptering" });
     }
 });
 
-// Start serveren
+// Start server
 app.listen(port, () => {
     console.log(`Serveren kjører på http://localhost:${port}`);
 });
 
-// POST: Logg inn bruker
+// Logg inn
 app.post('/login', (req, res) => {
     const { brukernavn, passord } = req.body;
 
@@ -91,14 +89,36 @@ app.post('/login', (req, res) => {
         }
 
         try {
-            const match = await bcrypt.compare(passord, row.passord);
+            const match = await bcrypt.compare(passord, row.passord); // Sjekk passord
             if (match) {
-                res.json({ success: true, brukernavn: row.brukernavn });
+                res.json({ success: true, brukernavn: row.brukernavn }); // Innlogging OK
             } else {
                 res.status(401).json({ error: "Hei2, Feil brukernavn eller passord" });
             }
         } catch (error) {
             res.status(500).json({ error: "Noe gikk galt ved sjekking av passord" });
         }
+    });
+});
+
+// Hent kjøpte biler for ein bruker
+app.get('/minside/:brukernavn', (req, res) => {
+    const brukernavn = req.params.brukernavn;
+
+    const sql = `
+        SELECT biler.*
+        FROM kjop
+        JOIN brukere ON kjop.bruker_id = brukere.id
+        JOIN biler ON kjop.bilerID = biler.id
+        WHERE brukere.brukernavn = ?
+    `;
+
+    db.all(sql, [brukernavn], (err, rows) => {
+        if (err) {
+            console.error("Feil ved henting av kjøpte biler:", err);
+            return res.status(500).json({ error: "Noe gikk galt på serveren." });
+        }
+
+        res.json(rows); // Send kjøpte biler
     });
 });

@@ -1,4 +1,4 @@
-/* Generelle stiler */
+/* Stil for heile sida */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +7,7 @@ body {
     color: #333;
 }
 
-/* Header */
+/* Toppen av sida */
 header {
     background-color: #005bbb;
     color: white;
@@ -15,6 +15,7 @@ header {
     text-align: center;
 }
 
+/* Menyen */
 nav ul {
     list-style: none;
     padding: 0;
@@ -22,23 +23,26 @@ nav ul {
     text-align: center;
 }
 
+/* Menyvalg på rekke */
 nav ul li {
     display: inline;
     margin: 0 15px;
 }
 
+/* Lenkene i menyen */
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* Hovedinnhold */
+/* Hovedinnhald i midten */
 main {
     text-align: center;
     padding: 50px;
 }
 
+/* Intro-boksen */
 .intro {
     background-color: #ffa500;
     padding: 30px;
@@ -47,7 +51,7 @@ main {
     font-size: 1.2em;
 }
 
-/* Skjemaer */
+/* Skjema-stil */
 form {
     max-width: 400px;
     margin: auto;
@@ -55,50 +59,53 @@ form {
     background: white;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Sørger for at padding ikke bryter bredden */
+    box-sizing: border-box;
 }
 
+/* Etikett over input */
 label {
     display: block;
     margin-bottom: 5px;
-    margin-top: 5 px; /* Justerer etikettene for å gi litt avstand til inputfeltene */
+    margin-top: 5 px;
     padding-top: 20px;
     font-weight: bold;
 }
 
-/* Justering for passordetiketten */
+/* Ekstra mellomrom for passord */
 #password-label {
-    margin-top: 15px; /* Justerer passordetiketten */
+    margin-top: 15px;
 }
 
+/* Input og knapp */
 input, button {
     display: block;
-    width: 100%; /* Gjør at inputfeltene tar opp 100% av tilgjengelig bredde */
+    width: 100%;
     margin-top: 10px;
     padding: 10px;
     font-size: 1em;
-    box-sizing: border-box; /* Sørger for at padding er inkludert i bredden */
+    box-sizing: border-box;
 }
 
-/* Logg inn-knapp */
+/* Knapp utforming */
 button {
-    background-color: #ffa500; /* Oransje knapp */
+    background-color: #ffa500;
     color: white;
     border: none;
     cursor: pointer;
     font-weight: bold;
 }
 
+/* Knapp når musa er over */
 button:hover {
     background-color: #cc8400;
 }
 
-/* Footer */
+/* Fjerner footer */
 footer {
-    display: none; /* Fjerner "Helgomega" fra footer */
+    display: none;
 }
 
-/* Knapp for logg inn */
+/* Oransje knapp */
 .orange-button {
     background-color: #ffa500;
     color: white;
@@ -107,28 +114,30 @@ footer {
     font-weight: bold;
 }
 
+/* Knapp når musa er over */
 .orange-button:hover {
     background-color: #cc8400;
 }
 
+/* Bilde av bil */
 .bil-bilde {
-    width: 300px;     /* Juster bredden etter ønsket størrelse */
-    height: auto;     /* Bevar proporsjoner */
-    border-radius: 8px;  /* Valgfritt: avrundede hjørner */
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
-/* Grid-layout for biler */
+/* Grid for bilvisning */
 .bil-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Juster etter skjerm */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 40px;
     max-width: 1200px;
     margin: auto;
 }
 
-/* Hvert bilkort */
+/* Stil på ein enkelt bil */
 .bil {
     background-color: white;
     border: 1px solid #ddd;
@@ -137,58 +146,72 @@ footer {
     text-align: left;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.2s ease;
-    max-width: 400px;  /* Gjør kortet smalere */
-    font-size: 0.9em;  /* Litt mindre tekst */
+    max-width: 400px;
+    font-size: 0.9em;
 }
 
+/* Løfter kort når du peker */
 .bil:hover {
     transform: translateY(-4px);
 }
 
+/* Tittel på bilkort */
 .bil h3 {
     margin: 0 0 8px 0;
     font-size: 1.1em;
     color: #005bbb;
 }
 
+/* Tekst i bilkort */
 .bil p {
     margin: 4px 0;
 }
 
+/* Bilbilde i kort */
 .bil-bilde {
     width: 100%;
-    height: 160px;        /* Fast høyde */
-    object-fit: cover;    /* Beskjær bilde for å passe inn pent */
+    height: 160px;
+    object-fit: cover;
     border-radius: 6px;
     margin-bottom: 10px;
 }
 
+/* Container rundt bilkort */
 #bil-container {
-    padding: 20px;         /* Luft rundt hele containeren */
-    max-width: 1200px;     /* Setter maks bredde */
-    margin: 0 auto;        /* Sentrerer innholdet */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Overskrift "Våre biler" */
 .våre-biler-container {
     display: flex;
-    justify-content: center;  /* Sentrerer horisontalt */
-    align-items: center;      /* Sentrerer vertikalt */
-    text-align: center;       /* Sentrerer teksten */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     margin: 0;
-    padding: 20px;            /* Legger til litt padding rundt */
+    padding: 20px;
 }
 
+/* Stil på overskrifttekst */
 .våre-biler-container h2 {
-    font-size: 2rem;         /* Større tekst */
-    color: #333;             /* Farge på teksten */
-    margin: 0;               /* Fjerner margin rundt h2 */
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
 }
 
-
-.brukernavn-visning {
+/* Visning av innlogga brukar */
+.bruker-info {
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Navn oppe til høgre */
+#brukernavn-visning {
     font-weight: bold;
     color: white;
     background-color: #005bbb;
@@ -196,9 +219,13 @@ footer {
     border-radius: 5px;
 }
 
+/* Logg ut-knapp */
 #logoutButton {
-    margin-left: 10px;
-    padding: 8px 16px;
-    font-size: 0.9em;
+    margin-top: 5px;
+    padding: 4px 10px;
+    font-size: 0.8em;
     border-radius: 5px;
+    display: inline-block;
+    width: auto;
+    max-width: 150px;
 }
