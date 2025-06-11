@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+    <!-- Grunnleggjande metadata for søknadsoversikt -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Søknad | Skogvika VGS</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Spesielle stiler for søknadsoversikts-sida */
         .application-hero {
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
@@ -13,6 +15,7 @@
             text-align: center;
         }
 
+        /* Container for søknadsinnhaldet */
         .application-container {
             max-width: 800px;
             margin: 0 auto;
@@ -20,6 +23,7 @@
             background: white;
         }
 
+        /* Rutenett for tilgangskort */
         .access-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -27,6 +31,7 @@
             margin: 3rem 0;
         }
 
+        /* Generisk tilgangskort */
         .access-card {
             background: white;
             border-radius: 20px;
@@ -37,12 +42,14 @@
             border: 2px solid #e9ecef;
         }
 
+        /* Hover-effekt for tilgangskort */
         .access-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
             border-color: #28a745;
         }
 
+        /* Ikon i tilgangskort */
         .access-icon {
             width: 100px;
             height: 100px;
@@ -55,6 +62,7 @@
             color: white;
         }
 
+        /* Ulike fargar for elevar og ansatte */
         .student-card .access-icon {
             background: linear-gradient(45deg, #667eea, #764ba2);
         }
@@ -63,18 +71,21 @@
             background: linear-gradient(45deg, #28a745, #20c997);
         }
 
+        /* Tittel i tilgangskort */
         .access-card h3 {
             margin-bottom: 1rem;
             color: #2c3e50;
             font-size: 1.8rem;
         }
 
+        /* Tekst i tilgangskort */
         .access-card p {
             margin-bottom: 2rem;
             color: #6c757d;
             line-height: 1.6;
         }
 
+        /* Knappane i tilgangskort */
         .access-btn {
             width: 100%;
             padding: 1rem 2rem;
@@ -88,21 +99,25 @@
             display: inline-block;
         }
 
+        /* Elevknapp */
         .student-btn {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
         }
 
+        /* Ansattknapp */
         .staff-btn {
             background: linear-gradient(45deg, #28a745, #20c997);
             color: white;
         }
 
+        /* Hover-effekt for tilgangsknappane */
         .access-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
+        /* Info-seksjon med grå bakgrunn */
         .info-section {
             background: #f8f9fa;
             padding: 3rem 2rem;
@@ -110,18 +125,21 @@
             margin: 4rem 0;
         }
 
+        /* Tittel i info-seksjon */
         .info-section h3 {
             color: #2c3e50;
             margin-bottom: 2rem;
             text-align: center;
         }
 
+        /* Rutenett for info-element */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
+        /* Enkelt info-element */
         .info-item {
             background: white;
             padding: 1.5rem;
@@ -129,11 +147,13 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Tittel i info-element */
         .info-item h4 {
             color: #28a745;
             margin-bottom: 1rem;
         }
 
+        /* Fargerik frist-banner */
         .deadline-banner {
             background: linear-gradient(45deg, #ff6b6b, #ffa726);
             color: white;
@@ -144,17 +164,20 @@
             animation: pulse 2s infinite;
         }
 
+        /* Pulsering-animasjon for frist-banner */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
 
+        /* Liste utan punkt-markeringar */
         .requirements-list {
             list-style: none;
             padding: 0;
         }
 
+        /* Kvart element i krav-lista */
         .requirements-list li {
             padding: 0.5rem 0;
             border-bottom: 1px solid #e9ecef;
@@ -163,20 +186,25 @@
             gap: 0.5rem;
         }
 
+        /* Ikon framfor kvart krav */
         .requirements-list li:before {
             content: "📋";
             font-weight: bold;
         }
 
+        /* Responsivt design for mobil */
         @media (max-width: 768px) {
+            /* Ein kolonne på mobil */
             .access-cards {
                 grid-template-columns: 1fr;
             }
 
+            /* Mindre padding på hero */
             .application-hero {
                 padding: 3rem 1rem;
             }
 
+            /* Mindre padding på container */
             .application-container {
                 padding: 2rem 1rem;
             }
@@ -184,6 +212,7 @@
     </style>
 </head>
 <body>
+    <!-- Navigasjonsheader -->
     <header>
         <div class="header-content">
             <div class="logo">
@@ -202,18 +231,23 @@
         </div>
     </header>
 
+    <!-- Hero-seksjon med velkommen-melding -->
     <section class="application-hero">
         <h1>Søknad til Skogvika VGS</h1>
         <p>Din fremtid begynner med en søknad. Velg hvordan du vil fortsette:</p>
     </section>
 
+    <!-- Hovudcontainer for søknadsinnhaldet -->
     <main class="application-container">
+        <!-- Viktig frist-banner som pulserer -->
         <div class="deadline-banner">
             <h3>⏰ Søknadsfrist: 1. mars 2025</h3>
             <p>Husk å søke i tide! Sent innsendte søknader behandles ikke.</p>
         </div>
 
+        <!-- To hovudkort - for elevar og ansatte -->
         <div class="access-cards">
+            <!-- Kort for elevar som vil søke opptak -->
             <div class="access-card student-card">
                 <div class="access-icon">👨‍🎓</div>
                 <h3>Jeg vil søke opptak</h3>
@@ -226,6 +260,7 @@
                 </a>
             </div>
 
+            <!-- Kort for ansatte som skal behandle søknader -->
             <div class="access-card staff-card">
                 <div class="access-icon">👨‍🏫</div>
                 <h3>Behandle søknader (Ansatte)</h3>
@@ -239,9 +274,11 @@
             </div>
         </div>
 
+        <!-- Info-seksjon med viktig informasjon -->
         <div class="info-section">
             <h3>Viktig informasjon om søknadsprosessen</h3>
             <div class="info-grid">
+                <!-- Viktige datoar -->
                 <div class="info-item">
                     <h4>📅 Viktige datoer</h4>
                     <ul class="requirements-list">
@@ -252,6 +289,7 @@
                     </ul>
                 </div>
 
+                <!-- Nødvendige dokument -->
                 <div class="info-item">
                     <h4>📄 Nødvendige dokumenter</h4>
                     <ul class="requirements-list">
@@ -262,6 +300,7 @@
                     </ul>
                 </div>
 
+                <!-- Kontaktinformasjon -->
                 <div class="info-item">
                     <h4>📧 Kontakt oss</h4>
                     <p>Har du spørsmål om søknadsprosessen?</p>
@@ -270,6 +309,7 @@
                     <p><strong>Åpningstider:</strong> 08:00-15:00</p>
                 </div>
 
+                <!-- FAQ-lenker -->
                 <div class="info-item">
                     <h4>❓ Ofte stilte spørsmål</h4>
                     <ul class="requirements-list">
@@ -282,6 +322,7 @@
             </div>
         </div>
 
+        <!-- Call-to-action for rådgiverhjelp -->
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem 2rem; border-radius: 20px; text-align: center;">
             <h3>Trenger du hjelp med søknaden?</h3>
             <p style="margin-bottom: 2rem;">
@@ -294,14 +335,18 @@
         </div>
     </main>
 
+    <!-- Footer med opptak-spesifikk informasjon -->
     <footer>
         <div class="footer-content">
+            <!-- Opptak-kontakt -->
             <div class="footer-section">
                 <h4>Opptak og søknad</h4>
                 <p>📧 opptak@skogvika.vgs.no</p>
                 <p>📞 22 34 56 90</p>
                 <p>👩‍💼 Opptaksansvarlig: Linda Opptak</p>
             </div>
+            
+            <!-- Nyttige lenkjer -->
             <div class="footer-section">
                 <h4>Nyttige lenker</h4>
                 <ul>
@@ -312,11 +357,14 @@
                 </ul>
             </div>
         </div>
+        
+        <!-- Copyright-info -->
         <div class="footer-bottom">
             <p>&copy; 2025 Skogvika Videregående Skole - Opptak</p>
         </div>
     </footer>
 
+    <!-- Laster JavaScript-fila -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,15 +1,17 @@
+// Køyr når heile sida er ferdig lasta
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Velkommen til Skogvika VGS!");
     
-    // Sjekk innlogget bruker og vis i navigasjonen
+    // Sjekk om brukar er innlogga og vis det i navigasjonen
     checkLoggedInUser();
     
-    // Smooth scrolling for navigation links
+    // Legg til smooth scrolling for navigasjonslenkjer som startar med #
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+            e.preventDefault(); // Stopp normal link-oppførsel
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                // Scroll mjukt til målet
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
@@ -18,10 +20,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Active navigation highlight
+    // Aktiv navigasjonsmarkering - markerer kva seksjon som er synleg
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('section[id]');
 
+    // Funksjon som oppdaterer kva navigasjonslenke som er aktiv
     function highlightNavigation() {
         let current = '';
         sections.forEach(section => {
@@ -31,44 +34,50 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
+        // Fjern aktiv klasse frå alle lenkjer
         navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+                link.classList.add('active'); // Legg til aktiv klasse på riktig lenke
             }
         });
     }
 
+    // Køyr highlight-funksjonen når brukar skrollar
     window.addEventListener('scroll', highlightNavigation);
 
-    // Add interactive elements for program cards
+    // Legg til interaktive element for programkort
     const programCards = document.querySelectorAll('.program-card');
     programCards.forEach(card => {
+        // Når musa går over kortet
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-15px) scale(1.02)';
         });
         
+        // Når musa går vekk frå kortet
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(-10px) scale(1)';
         });
     });
 
-    // Intersection Observer for scroll animations
+    // Intersection Observer for scroll-animasjonar
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
+    // Observer som køyrer når element kjem inn i synsfeltet
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Vis elementet når det kjem i synsfeltet
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
             }
         });
     }, observerOptions);
 
-    // Observe elements for animation on scroll
+    // Observer element for animasjon på scroll
     document.querySelectorAll('.program-card, .info-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -76,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(el);
     });
 
-    // Initialize form handlers
+    // Start andre funksjonar
     handleContactForm();
     handleApplicationForm();
     loadSchoolNews();
 });
 
-// Sjekk innlogget bruker
+// Sjekk om brukar er innlogga
 function checkLoggedInUser() {
     const loggedInUser = sessionStorage.getItem('loggedInUser');
     const loginLink = document.querySelector('a[href="login.html"]');
@@ -91,7 +100,7 @@ function checkLoggedInUser() {
         try {
             const user = JSON.parse(loggedInUser);
             
-            // Endre "Logg inn" til brukerinfo
+            // Endre "Logg inn" til brukarinfo
             loginLink.textContent = `${user.username} (${user.userType})`;
             loginLink.href = '#';
             loginLink.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
@@ -111,15 +120,16 @@ function checkLoggedInUser() {
     }
 }
 
-// Vis brukermeny
+// Vis brukarmeny med dropdown
 function showUserMenu(user) {
-    // Fjern eksisterende meny
+    // Fjern eksisterande meny
     const existingMenu = document.getElementById('userMenu');
     if (existingMenu) {
         existingMenu.remove();
         return;
     }
     
+    // Opprett ny meny
     const menu = document.createElement('div');
     menu.id = 'userMenu';
     menu.style.cssText = `
@@ -136,6 +146,7 @@ function showUserMenu(user) {
         margin-top: 0.5rem;
     `;
     
+    // HTML for menyen
     menu.innerHTML = `
         <div style="margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee;">
             <strong>${user.username}</strong><br>
@@ -152,12 +163,12 @@ function showUserMenu(user) {
         </button>
     `;
     
-    // Posisjonering relativt til login-lenken
+    // Fest meny til login-lenka
     const loginLink = document.querySelector('a[href="#"]');
     loginLink.style.position = 'relative';
     loginLink.appendChild(menu);
     
-    // Lukk meny ved klikk utenfor
+    // Lukk meny ved klikk utanfor
     setTimeout(() => {
         document.addEventListener('click', function closeMenu(e) {
             if (!menu.contains(e.target) && e.target !== loginLink) {
@@ -171,44 +182,46 @@ function showUserMenu(user) {
 // Logg ut funksjon
 function logOut() {
     sessionStorage.removeItem('loggedInUser');
-    window.location.reload();
+    window.location.reload(); // Last sida på nytt
 }
 
-// Utility funksjoner
+// Utility-funksjon for å validere skjema
 function validateForm(formElement) {
     const inputs = formElement.querySelectorAll('input[required]');
     let isValid = true;
     
     inputs.forEach(input => {
         if (!input.value.trim()) {
-            input.style.borderColor = '#dc3545';
+            input.style.borderColor = '#dc3545'; // Raud kant viss tomt
             isValid = false;
         } else {
-            input.style.borderColor = '#28a745';
+            input.style.borderColor = '#28a745'; // Grøn kant viss utfylt
         }
     });
     
     return isValid;
 }
 
+// Vis lasting-animasjon
 function showLoading(element) {
     element.innerHTML = '<div style="text-align: center; padding: 2rem;"><div style="display: inline-block; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #28a745; border-radius: 50%; animation: spin 1s linear infinite;"></div></div>';
 }
 
-// Contact form handling
+// Handter kontaktskjema
 function handleContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Stopp vanleg skjemainnsending
             
             if (validateForm(this)) {
                 showLoading(document.getElementById('form-message'));
                 
+                // Simuler sending med timeout
                 setTimeout(() => {
                     document.getElementById('form-message').innerHTML = 
                         '<div style="color: #28a745; text-align: center; padding: 1rem;">Takk for din henvendelse! Vi tar kontakt snart.</div>';
-                    contactForm.reset();
+                    contactForm.reset(); // Tøm skjemaet
                 }, 2000);
             } else {
                 document.getElementById('form-message').innerHTML = 
@@ -218,13 +231,14 @@ function handleContactForm() {
     }
 }
 
-// Application form handling
+// Handter søknadsskjema
 function handleApplicationForm() {
     const applicationForm = document.getElementById('applicationForm');
     if (applicationForm) {
         applicationForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Hent data frå skjemaet
             const formData = new FormData(this);
             const applicationData = {
                 name: formData.get('name'),
@@ -237,6 +251,7 @@ function handleApplicationForm() {
             
             showLoading(document.getElementById('application-message'));
             
+            // Simuler behandling
             setTimeout(() => {
                 document.getElementById('application-message').innerHTML = 
                     '<div style="color: #28a745; text-align: center; padding: 1rem;">Søknaden er mottatt! Du vil få svar innen 2 uker.</div>';
@@ -246,10 +261,11 @@ function handleApplicationForm() {
     }
 }
 
-// Load school news
+// Last skulenyheter (mock data)
 function loadSchoolNews() {
     const newsContainer = document.getElementById('news-container');
     if (newsContainer) {
+        // Simulerte nyheter
         const mockNews = [
             {
                 title: "Nye IT-laboratorier åpnet",
@@ -268,6 +284,7 @@ function loadSchoolNews() {
             }
         ];
 
+        // Bygg HTML for nyhetene
         const newsHTML = mockNews.map(news => `
             <div class="news-item">
                 <h4>${news.title}</h4>
@@ -280,7 +297,7 @@ function loadSchoolNews() {
     }
 }
 
-// Keyboard navigation support
+// Tastaturnavigasjon support
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Tab') {
         document.body.classList.add('keyboard-navigation');

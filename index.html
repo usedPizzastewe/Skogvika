@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+    <!-- Grunnleggjande metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skogvika Videregående Skole</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Hovudnavigasjon øverst på sida -->
     <header>
         <div class="header-content">
+            <!-- Logo og skulenavn -->
             <div class="logo">
                 <div class="logo-icon">S</div>
                 <h1>Skogvika VGS</h1>
             </div>
+            
+            <!-- Navigasjonsmeny -->
             <nav>
                 <ul>
                     <li><a href="#hjem" class="active">Hjem</a></li>
@@ -25,10 +30,13 @@
         </div>
     </header>
 
+    <!-- Hero-seksjon med velkommen melding -->
     <section class="hero" id="hjem">
         <div class="hero-content">
             <h2>Velkommen til Skogvika VGS</h2>
             <p>Din fremtid begynner her! Opplev moderne utdanning i inspirerende omgivelser med engasjerte lærere og et sterkt miljø.</p>
+            
+            <!-- Call-to-action knappane -->
             <div class="cta-buttons">
                 <a href="#programmer" class="btn btn-primary">Utforsk våre program</a>
                 <a href="soknad.html" class="btn btn-secondary">Søk opptak</a>
@@ -36,15 +44,22 @@
         </div>
     </section>
 
+    <!-- Hovudinnhald på sida -->
     <main>
         <div class="container">
+            <!-- Seksjon som viser alle studieprogramma -->
             <section class="programs-section" id="programmer">
                 <h2 class="section-title">Våre Studieprogram</h2>
+                
+                <!-- Rutenett med programkort -->
                 <div class="programs-grid">
+                    <!-- IT-programmet -->
                     <div class="program-card">
                         <div class="program-icon">💻</div>
                         <h3>Informasjonsteknologi</h3>
                         <p>Bli ekspert på fremtidens teknologi med vårt moderne IT-program</p>
+                        
+                        <!-- Liste over kva du lærar -->
                         <ul class="program-features">
                             <li>Programmering og utvikling</li>
                             <li>Nettverksadministrasjon</li>
@@ -55,10 +70,13 @@
                         <a href="it-program.html" class="btn btn-primary">Les mer</a>
                     </div>
 
+                    <!-- Realfag-programmet -->
                     <div class="program-card">
                         <div class="program-icon">🔬</div>
                         <h3>Realfag</h3>
                         <p>Utforsk naturvitenskapens spennende verden med praktiske eksperimenter</p>
+                        
+                        <!-- Liste over kva du lærar -->
                         <ul class="program-features">
                             <li>Fysikk og kjemi</li>
                             <li>Biologi og geofag</li>
@@ -69,10 +87,13 @@
                         <a href="realfag.html" class="btn btn-primary">Les mer</a>
                     </div>
 
+                    <!-- Kunst og design-programmet -->
                     <div class="program-card">
                         <div class="program-icon">🎨</div>
                         <h3>Kunst, design og arkitektur</h3>
                         <p>Utfold din kreativitet og utvikle dine kunstneriske ferdigheter</p>
+                        
+                        <!-- Liste over kva du lærar -->
                         <ul class="program-features">
                             <li>Digital design og multimedia</li>
                             <li>Tegning og maleri</li>
@@ -85,19 +106,27 @@
                 </div>
             </section>
 
+            <!-- Seksjon om kvifor velge skulen -->
             <section id="om-skolen">
                 <h2 class="section-title">Hvorfor velge Skogvika VGS?</h2>
+                
+                <!-- Rutenett med info-kort -->
                 <div class="info-grid">
+                    <!-- Høge karakterar -->
                     <div class="info-card">
                         <div class="info-icon">🏆</div>
                         <h3>Høye karakterer</h3>
                         <p>Våre elever oppnår konsekvent bedre resultater enn landsgjennomsnittet og kommer godt forberedt inn på universitetet.</p>
                     </div>
+                    
+                    <!-- Sterkt miljø -->
                     <div class="info-card">
                         <div class="info-icon">👥</div>
                         <h3>Sterkt miljø</h3>
                         <p>Et inkluderende og trygt miljø hvor alle blir sett og støttet i sin utvikling, både faglig og personlig.</p>
                     </div>
+                    
+                    <!-- Moderne fasiliteter -->
                     <div class="info-card">
                         <div class="info-icon">🚀</div>
                         <h3>Moderne fasiliteter</h3>
@@ -108,14 +137,18 @@
         </div>
     </main>
 
+    <!-- Footer med kontaktinfo og lenkjer -->
     <footer>
         <div class="footer-content">
+            <!-- Kontaktinformasjon -->
             <div class="footer-section">
                 <h4>Kontakt oss</h4>
                 <p>📍 Skogveien 42, 1234 Skogvika</p>
                 <p>📞 22 34 56 78</p>
                 <p>✉️ post@skogvika.vgs.no</p>
             </div>
+            
+            <!-- Lenkjer for elevar -->
             <div class="footer-section">
                 <h4>For elever</h4>
                 <ul>
@@ -125,6 +158,8 @@
                     <li><a href="404.html">Elevrådet</a></li>
                 </ul>
             </div>
+            
+            <!-- Lenkjer for foreldre -->
             <div class="footer-section">
                 <h4>For foreldre</h4>
                 <ul>
@@ -134,6 +169,8 @@
                     <li><a href="404.html">Kontakt lærer</a></li>
                 </ul>
             </div>
+            
+            <!-- Sosiale medier -->
             <div class="footer-section">
                 <h4>Følg oss</h4>
                 <ul>
@@ -144,11 +181,14 @@
                 </ul>
             </div>
         </div>
+        
+        <!-- Copyright-info -->
         <div class="footer-bottom">
             <p>&copy; 2025 Skogvika Videregående Skole. Alle rettigheter forbeholdt.</p>
         </div>
     </footer>
 
+    <!-- Laster JavaScript-fila -->
     <script src="script.js"></script>
 </body>
 </html>

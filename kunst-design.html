@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
+    <!-- Grunnleggjande metadata for kunst og design-sida -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kunst, design og arkitektur | Skogvika VGS</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Spesielle stiler for kunst og design-sida */
         .program-hero {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: white;
@@ -13,6 +15,7 @@
             text-align: center;
         }
 
+        /* Stort ikon for programmet */
         .program-icon-large {
             width: 120px;
             height: 120px;
@@ -27,6 +30,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
+        /* Container for hovudinnhaldet */
         .program-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -34,6 +38,7 @@
             background: white;
         }
 
+        /* To-kolonne layout - hovudinnhald og sidebar */
         .content-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -41,24 +46,28 @@
             margin-bottom: 4rem;
         }
 
+        /* Styling for hovudtitlar */
         .main-content h2 {
             color: #2c3e50;
             margin-bottom: 1.5rem;
             font-size: 2rem;
         }
 
+        /* Styling for undertitlar */
         .main-content h3 {
             color: #4facfe;
             margin: 2rem 0 1rem 0;
             font-size: 1.5rem;
         }
 
+        /* Styling for avsnitt */
         .main-content p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
             color: #555;
         }
 
+        /* Sidebar med grå bakgrunn */
         .sidebar {
             background: #f8f9fa;
             padding: 2rem;
@@ -66,6 +75,7 @@
             height: fit-content;
         }
 
+        /* Info-boksar i sidebar */
         .info-box {
             background: white;
             padding: 1.5rem;
@@ -74,17 +84,20 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Titlar i info-boksane */
         .info-box h4 {
             color: #4facfe;
             margin-bottom: 1rem;
             font-size: 1.2rem;
         }
 
+        /* Lister utan standard punkt-markeringar */
         .info-list {
             list-style: none;
             padding: 0;
         }
 
+        /* Kvart element i lista */
         .info-list li {
             padding: 0.5rem 0;
             border-bottom: 1px solid #e9ecef;
@@ -93,11 +106,13 @@
             gap: 0.5rem;
         }
 
+        /* Kunstikon framfor kvart element */
         .info-list li:before {
             content: "🎨";
             font-weight: bold;
         }
 
+        /* Rutenett for karrierekort */
         .career-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -105,6 +120,7 @@
             margin: 3rem 0;
         }
 
+        /* Enkelt karrierekort */
         .career-card {
             background: white;
             padding: 2rem;
@@ -113,15 +129,18 @@
             transition: transform 0.3s ease;
         }
 
+        /* Hover-effekt for karrierekort */
         .career-card:hover {
             transform: translateY(-5px);
         }
 
+        /* Titlar i karrierekort */
         .career-card h4 {
             color: #4facfe;
             margin-bottom: 1rem;
         }
 
+        /* Rutenett for fagkort */
         .subjects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -129,6 +148,7 @@
             margin: 2rem 0;
         }
 
+        /* Enkelt fagkort med gradient-bakgrunn */
         .subject-card {
             background: linear-gradient(45deg, #4facfe, #00f2fe);
             color: white;
@@ -137,11 +157,13 @@
             text-align: center;
         }
 
+        /* Titlar i fagkort */
         .subject-card h5 {
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
 
+        /* Call-to-action seksjon for søknad */
         .apply-section {
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             color: white;
@@ -151,16 +173,19 @@
             margin: 4rem 0;
         }
 
+        /* Tittel i søknadsseksjon */
         .apply-section h3 {
             margin-bottom: 1rem;
             font-size: 2rem;
         }
 
+        /* Tekst i søknadsseksjon */
         .apply-section p {
             margin-bottom: 2rem;
             font-size: 1.2rem;
         }
 
+        /* Galleri for studio og verkstader */
         .studio-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -168,6 +193,7 @@
             margin: 2rem 0;
         }
 
+        /* Enkelt studio-element */
         .studio-item {
             background: #f8f9fa;
             padding: 1.5rem;
@@ -177,16 +203,19 @@
             transition: all 0.3s ease;
         }
 
+        /* Hover-effekt for studio-element */
         .studio-item:hover {
             border-color: #4facfe;
             transform: translateY(-3px);
         }
 
+        /* Tittel i studio-element */
         .studio-item h5 {
             color: #4facfe;
             margin-bottom: 0.5rem;
         }
 
+        /* Portefølje-seksjon med gradient-bakgrunn */
         .portfolio-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 3rem 2rem;
@@ -195,6 +224,7 @@
             text-align: center;
         }
 
+        /* Rutenett for portefølje-element */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -202,6 +232,7 @@
             margin-top: 2rem;
         }
 
+        /* Enkelt portefølje-element - firkanta med ikon */
         .portfolio-item {
             aspect-ratio: 1;
             background: linear-gradient(45deg, #4facfe, #00f2fe);
@@ -214,24 +245,30 @@
             transition: transform 0.3s ease;
         }
 
+        /* Hover-effekt for portefølje-element */
         .portfolio-item:hover {
             transform: scale(1.05);
         }
 
+        /* Responsivt design for mobil */
         @media (max-width: 768px) {
+            /* Ein kolonne på mobil */
             .content-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
+            /* Mindre padding på hero */
             .program-hero {
                 padding: 3rem 1rem;
             }
 
+            /* Ein kolonne for karrierekort på mobil */
             .career-cards {
                 grid-template-columns: 1fr;
             }
 
+            /* To kolonnar for portefølje på mobil */
             .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -239,6 +276,7 @@
     </style>
 </head>
 <body>
+    <!-- Navigasjonsheader -->
     <header>
         <div class="header-content">
             <div class="logo">
@@ -257,14 +295,17 @@
         </div>
     </header>
 
+    <!-- Hero-seksjon for kunst og design-programmet -->
     <section class="program-hero">
         <div class="program-icon-large">🎨</div>
         <h1>Kunst, design og arkitektur</h1>
         <p>Utfold din kreativitet og utvikle dine kunstneriske ferdigheter</p>
     </section>
 
+    <!-- Hovudinnhald for kunst og design-sida -->
     <main class="program-content">
         <div class="content-grid">
+            <!-- Hovudinnhald - venstre kolonne -->
             <div class="main-content">
                 <h2>Kreativitet møter teknologi</h2>
                 <p>
@@ -281,6 +322,7 @@
                     og hvordan du skaper visuelle løsninger for reelle problemer.
                 </p>
 
+                <!-- Rutenett som viser alle faga du lærar -->
                 <div class="subjects-grid">
                     <div class="subject-card">
                         <h5>Tegning og maleri</h5>
@@ -314,6 +356,7 @@
                     tilgang til samme utstyr som brukes i profesjonelle designstudioer og arkitektkontor.
                 </p>
 
+                <!-- Galleri som viser alle verkstadene -->
                 <div class="studio-gallery">
                     <div class="studio-item">
                         <h5>🖼️ Malerstudio</h5>
@@ -341,6 +384,7 @@
                     </div>
                 </div>
 
+                <!-- Seksjon om porteføljebygging -->
                 <div class="portfolio-section">
                     <h3>Bygg din portefølje</h3>
                     <p>
@@ -348,6 +392,7 @@
                         som du kan bruke ved søknad til høyere utdanning eller i jobbsøking.
                     </p>
                     
+                    <!-- Visuell representasjon av porteføljetypar -->
                     <div class="portfolio-grid">
                         <div class="portfolio-item">🖌️</div>
                         <div class="portfolio-item">📐</div>
@@ -366,6 +411,7 @@
                 </p>
 
                 <h3>Karrieremuligheter</h3>
+                <!-- Rutenett som viser ulike karriereval -->
                 <div class="career-cards">
                     <div class="career-card">
                         <h4>🎨 Grafisk designer</h4>
@@ -394,7 +440,9 @@
                 </div>
             </div>
 
+            <!-- Sidebar - høgre kolonne -->
             <div class="sidebar">
+                <!-- Fakta om programmet -->
                 <div class="info-box">
                     <h4>📋 Fakta om programmet</h4>
                     <ul class="info-list">
@@ -407,6 +455,7 @@
                     </ul>
                 </div>
 
+                <!-- Resultat og statistikk -->
                 <div class="info-box">
                     <h4>🏆 Våre resultater</h4>
                     <ul class="info-list">
@@ -418,6 +467,7 @@
                     </ul>
                 </div>
 
+                <!-- Utstyr og teknologi -->
                 <div class="info-box">
                     <h4>🛠️ Vårt utstyr</h4>
                     <ul class="info-list">
@@ -429,6 +479,7 @@
                     </ul>
                 </div>
 
+                <!-- Informasjon om lærarane -->
                 <div class="info-box">
                     <h4>👩‍🎨 Våre lærere</h4>
                     <ul class="info-list">
@@ -439,6 +490,7 @@
                     </ul>
                 </div>
 
+                <!-- Samarbeidspartnarar -->
                 <div class="info-box">
                     <h4>🤝 Samarbeidspartnere</h4>
                     <ul class="info-list">
@@ -451,6 +503,7 @@
             </div>
         </div>
 
+        <!-- Call-to-action seksjon for å søke opptak -->
         <div class="apply-section">
             <h3>Klar for å uttrykke din kreativitet?</h3>
             <p>Kunst, design og arkitektur på Skogvika VGS gir deg alle verktøy du trenger for en suksessfull karriere innen kreative fag.</p>
@@ -460,14 +513,18 @@
         </div>
     </main>
 
+    <!-- Footer med kontaktinfo og lenkjer -->
     <footer>
         <div class="footer-content">
+            <!-- Kontaktinfo for kunst og design-programmet -->
             <div class="footer-section">
                 <h4>Kontakt programmet</h4>
                 <p>📧 kunst@skogvika.vgs.no</p>
                 <p>📞 22 34 56 82</p>
                 <p>👩‍🎨 Avdelingsleder: Maria Kreativitet</p>
             </div>
+            
+            <!-- Relaterte lenkjer -->
             <div class="footer-section">
                 <h4>Relaterte lenker</h4>
                 <ul>
@@ -478,11 +535,14 @@
                 </ul>
             </div>
         </div>
+        
+        <!-- Copyright-info -->
         <div class="footer-bottom">
             <p>&copy; 2025 Skogvika Videregående Skole - Kunst, design og arkitektur</p>
         </div>
     </footer>
 
+    <!-- Laster JavaScript-fila -->
     <script src="script.js"></script>
 </body>
 </html>
