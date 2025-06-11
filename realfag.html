@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realfag | Skogvika VGS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .program-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .program-icon-large {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .program-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .main-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .main-content h3 {
+            color: #f5576c;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            height: fit-content;
+        }
+
+        .info-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h4 {
+            color: #f5576c;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-list li:before {
+            content: "⚗️";
+            font-weight: bold;
+        }
+
+        .career-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .career-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .career-card h4 {
+            color: #f5576c;
+            margin-bottom: 1rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .subject-card {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .subject-card h5 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .apply-section {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .apply-section h3 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .apply-section p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .lab-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .lab-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .lab-item:hover {
+            border-color: #f5576c;
+            transform: translateY(-3px);
+        }
+
+        .lab-item h5 {
+            color: #f5576c;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .program-hero {
+                padding: 3rem 1rem;
+            }
+
+            .career-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Skogvika VGS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hjem</a></li>
+                    <li><a href="index.html#programmer" class="active">Studieprogram</a></li>
+                    <li><a href="index.html#om-skolen">Om skolen</a></li>
+                    <li><a href="soknad.html">Søknad</a></li>
+                    <li><a href="login.html" id="loginNavLink">Logg inn</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="program-hero">
+        <div class="program-icon-large">🔬</div>
+        <h1>Realfag</h1>
+        <p>Utforsk naturvitenskapens spennende verden</p>
+    </section>
+
+    <main class="program-content">
+        <div class="content-grid">
+            <div class="main-content">
+                <h2>Realfag - din vei til fremtiden</h2>
+                <p>
+                    Realfag på Skogvika VGS gir deg solid grunnlag for videre studier innen naturvitenskap, 
+                    teknologi, ingeniørfag og medisin. Vi kombinerer teoretisk kunnskap med praktiske 
+                    eksperimenter i våre moderne laboratorier.
+                </p>
+
+                <h3>Hva lærer du?</h3>
+                <p>
+                    Vårt realfagsprogram dekker alle sentrale naturvitenskapelige fag. Du får dyp forståelse 
+                    av fysiske lover, kjemiske prosesser, biologiske sammenhenger og matematiske modeller. 
+                    Alt dette gjennom hands-on eksperimenter og forskningsprosjekter.
+                </p>
+
+                <div class="subjects-grid">
+                    <div class="subject-card">
+                        <h5>Fysikk 1 & 2</h5>
+                        <p>Mekanikk, elektrisitet, termodynamikk</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Kjemi 1 & 2</h5>
+                        <p>Organisk, uorganisk, analytisk kjemi</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Biologi 1 & 2</h5>
+                        <p>Cellebiologi, genetikk, økologi</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Matematikk R1 & R2</h5>
+                        <p>Funksjoner, derivasjon, integrasjon</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Geofag</h5>
+                        <p>Klimavitenskap, geologi, meteorologi</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Teknologi og forskningslære</h5>
+                        <p>Vitenskapelig metode, dataanalyse</p>
+                    </div>
+                </div>
+
+                <h3>Våre laboratorier</h3>
+                <p>
+                    Skogvika VGS har investert tungt i moderne utstyr som gir deg mulighet til å utføre 
+                    eksperimenter på universitetsnivå allerede i videregående skole.
+                </p>
+
+                <div class="lab-gallery">
+                    <div class="lab-item">
+                        <h5>🧪 Kjemilaboratorium</h5>
+                        <p>Spektroskopi, kromatografi, syntese</p>
+                    </div>
+                    <div class="lab-item">
+                        <h5>⚡ Fysikklaboratorium</h5>
+                        <p>Oscilloskop, kraftsensorer, datalogger</p>
+                    </div>
+                    <div class="lab-item">
+                        <h5>🦠 Biologilaboratorium</h5>
+                        <p>Mikroskopi, DNA-analyse, celledyrking</p>
+                    </div>
+                    <div class="lab-item">
+                        <h5>🌍 Geofag-stasjon</h5>
+                        <p>Værstasjon, seismograf, GPS-utstyr</p>
+                    </div>
+                </div>
+
+                <h3>Forskningsprosjekter</h3>
+                <p>
+                    Alle realfagselever gjennomfører egne forskningsprosjekter i samarbeid med NTNU, 
+                    UiO og lokale forskningsinstitusjoner. Mange av prosjektene resulterer i publikasjoner 
+                    og deltakelse på Forskningstorget.
+                </p>
+
+                <h3>Karrieremuligheter</h3>
+                <div class="career-cards">
+                    <div class="career-card">
+                        <h4>👩‍⚕️ Medisin og helse</h4>
+                        <p>Lege, tannlege, veterinær, bioingeniør, farmasøyt.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🔬 Forskning</h4>
+                        <p>Forsker innen biologi, kjemi, fysikk eller miljøvitenskap.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>⚙️ Ingeniørfag</h4>
+                        <p>Sivilingeniør innen kjemi, fysikk, bioteknologi eller miljø.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🌱 Miljø og bærekraft</h4>
+                        <p>Miljørådgiver, klimaforsker, fornybar energi-ekspert.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>📊 Dataanalyse</h4>
+                        <p>Bioinformatiker, statistiker, kvalitetsanalytiker.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🏫 Undervisning</h4>
+                        <p>Lærer, universitetslektor, popularisator av vitenskap.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="info-box">
+                    <h4>📋 Fakta om programmet</h4>
+                    <ul class="info-list">
+                        <li>3 års studieløp</li>
+                        <li>Studiekompetanse</li>
+                        <li>Høy matematikk (R1, R2)</li>
+                        <li>Forskningsprosjekt</li>
+                        <li>Universitetssamarbeid</li>
+                        <li>Små klasser (maks 24 elever)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🏆 Våre resultater</h4>
+                    <ul class="info-list">
+                        <li>98% fullfører programmet</li>
+                        <li>92% kommer inn på ønsket studie</li>
+                        <li>Karaktersnitt: 4.6/6.0</li>
+                        <li>85% velger STEM-studier</li>
+                        <li>15+ forskningsprosjekter årlig</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🔬 Vårt utstyr</h4>
+                    <ul class="info-list">
+                        <li>Spektrofotometer og GC-MS</li>
+                        <li>Digitale mikroskoper</li>
+                        <li>3D-modeller og simulering</li>
+                        <li>Datalogger og sensorer</li>
+                        <li>Tilgang til supercomputer</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>👨‍🔬 Våre lærere</h4>
+                    <ul class="info-list">
+                        <li>Master/PhD i realfag</li>
+                        <li>Forskningserfaring</li>
+                        <li>Universitetssamarbeid</li>
+                        <li>Oppdatert på ny forskning</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🤝 Samarbeidspartnere</h4>
+                    <ul class="info-list">
+                        <li>NTNU Trondheim</li>
+                        <li>Universitetet i Oslo</li>
+                        <li>SINTEF</li>
+                        <li>Norsk institutt for vannforskning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="apply-section">
+            <h3>Klar for å utforske naturens hemmeligheter?</h3>
+            <p>Realfag på Skogvika VGS gir deg det beste grunnlaget for en karriere innen naturvitenskap og teknologi.</p>
+            <a href="soknad.html" class="btn btn-primary" style="background: white; color: #28a745; padding: 1rem 2rem; font-size: 1.2rem;">
+                Søk opptak nå
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Kontakt programmet</h4>
+                <p>📧 realfag@skogvika.vgs.no</p>
+                <p>📞 22 34 56 81</p>
+                <p>👩‍🔬 Avdelingsleder: Dr. Anne Vitenskap</p>
+            </div>
+            <div class="footer-section">
+                <h4>Relaterte lenker</h4>
+                <ul>
+                    <li><a href="it-program.html">IT-programmet</a></li>
+                    <li><a href="kunst-design.html">Kunst og design</a></li>
+                    <li><a href="index.html">Tilbake til hovedsiden</a></li>
+                    <li><a href="404.html">Søknadsskjema</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Skogvika Videregående Skole - Realfag</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

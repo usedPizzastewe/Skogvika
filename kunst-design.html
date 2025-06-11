@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunst, design og arkitektur | Skogvika VGS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .program-hero {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .program-icon-large {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .program-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .main-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .main-content h3 {
+            color: #4facfe;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            height: fit-content;
+        }
+
+        .info-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h4 {
+            color: #4facfe;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-list li:before {
+            content: "🎨";
+            font-weight: bold;
+        }
+
+        .career-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .career-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .career-card h4 {
+            color: #4facfe;
+            margin-bottom: 1rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .subject-card {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .subject-card h5 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .apply-section {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .apply-section h3 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .apply-section p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .studio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .studio-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .studio-item:hover {
+            border-color: #4facfe;
+            transform: translateY(-3px);
+        }
+
+        .studio-item h5 {
+            color: #4facfe;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .program-hero {
+                padding: 3rem 1rem;
+            }
+
+            .career-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Skogvika VGS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hjem</a></li>
+                    <li><a href="index.html#programmer" class="active">Studieprogram</a></li>
+                    <li><a href="index.html#om-skolen">Om skolen</a></li>
+                    <li><a href="soknad.html">Søknad</a></li>
+                    <li><a href="login.html" id="loginNavLink">Logg inn</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="program-hero">
+        <div class="program-icon-large">🎨</div>
+        <h1>Kunst, design og arkitektur</h1>
+        <p>Utfold din kreativitet og utvikle dine kunstneriske ferdigheter</p>
+    </section>
+
+    <main class="program-content">
+        <div class="content-grid">
+            <div class="main-content">
+                <h2>Kreativitet møter teknologi</h2>
+                <p>
+                    Kunst, design og arkitektur-programmet på Skogvika VGS kombinerer tradisjonelle 
+                    kunstneriske teknikker med moderne digital teknologi. Du lærer å uttrykke deg 
+                    kreativt gjennom forskjellige medier og utvikler ferdigheter som er høyt verdsatt 
+                    i dagens kreative industri.
+                </p>
+
+                <h3>Hva lærer du?</h3>
+                <p>
+                    Vårt program dekker alle aspekter av visuell kommunikasjon og design. Fra håndtegning 
+                    og maleri til 3D-modellering og animasjon. Du lærer designprinsipper, kunsthistorie, 
+                    og hvordan du skaper visuelle løsninger for reelle problemer.
+                </p>
+
+                <div class="subjects-grid">
+                    <div class="subject-card">
+                        <h5>Tegning og maleri</h5>
+                        <p>Klassiske teknikker, komposisjon, fargelære</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Digital design</h5>
+                        <p>Photoshop, Illustrator, InDesign</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>3D-modellering</h5>
+                        <p>Blender, Cinema 4D, 3D-printing</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Arkitektur</h5>
+                        <p>CAD, SketchUp, byggeteknikk</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Grafisk design</h5>
+                        <p>Logo, layout, typografi, branding</p>
+                    </div>
+                    <div class="subject-card">
+                        <h5>Foto og video</h5>
+                        <p>Fotografering, redigering, filmskaping</p>
+                    </div>
+                </div>
+
+                <h3>Våre verksteder og studio</h3>
+                <p>
+                    Skogvika VGS har investert i profesjonelle kreative arbeidsplasser som gir deg 
+                    tilgang til samme utstyr som brukes i profesjonelle designstudioer og arkitektkontor.
+                </p>
+
+                <div class="studio-gallery">
+                    <div class="studio-item">
+                        <h5>🖼️ Malerstudio</h5>
+                        <p>Staffeli, lerret, farger, børster</p>
+                    </div>
+                    <div class="studio-item">
+                        <h5>💻 Digital lab</h5>
+                        <p>iMac Pro, Wacom-tablets, Adobe Creative Suite</p>
+                    </div>
+                    <div class="studio-item">
+                        <h5>🏗️ Arkitekturstudio</h5>
+                        <p>Tegnebretter, modellbygging, CAD-programmer</p>
+                    </div>
+                    <div class="studio-item">
+                        <h5>📸 Fotostudio</h5>
+                        <p>Profesjonell belysning, bakgrunn, kameraer</p>
+                    </div>
+                    <div class="studio-item">
+                        <h5>🖨️ 3D-verksted</h5>
+                        <p>3D-printere, laser-cutter, CNC-maskin</p>
+                    </div>
+                    <div class="studio-item">
+                        <h5>🎬 Video-lab</h5>
+                        <p>Filmkameraer, lydopptak, redigeringsutstyr</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-section">
+                    <h3>Bygg din portefølje</h3>
+                    <p>
+                        Gjennom hele utdanningsløpet jobber du med å bygge en profesjonell portefølje 
+                        som du kan bruke ved søknad til høyere utdanning eller i jobbsøking.
+                    </p>
+                    
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">🖌️</div>
+                        <div class="portfolio-item">📐</div>
+                        <div class="portfolio-item">🖼️</div>
+                        <div class="portfolio-item">📱</div>
+                        <div class="portfolio-item">🏠</div>
+                        <div class="portfolio-item">📖</div>
+                    </div>
+                </div>
+
+                <h3>Samarbeid med næringslivet</h3>
+                <p>
+                    Våre elever jobber med reelle prosjekter for lokale bedrifter, designbyråer og 
+                    arkitektkontor. Dette gir verdifull erfaring og ofte tilbud om sommerjobb eller 
+                    lærlingplass.
+                </p>
+
+                <h3>Karrieremuligheter</h3>
+                <div class="career-cards">
+                    <div class="career-card">
+                        <h4>🎨 Grafisk designer</h4>
+                        <p>Skape visuell identitet for bedrifter, magasiner og digitale plattformer.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🏢 Arkitekt</h4>
+                        <p>Designe bygninger, byrom og miljøer som forbedrer menneskers liv.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🎮 Game designer</h4>
+                        <p>Skape karakterer, miljøer og brukeropplevelser for spill og apps.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>📱 UX/UI designer</h4>
+                        <p>Designe intuitive og brukervennlige digitale opplevelser.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🎬 Filmskaper</h4>
+                        <p>Produsere filmer, reklamer, musikkvideo og digitalt innhold.</p>
+                    </div>
+                    <div class="career-card">
+                        <h4>🏛️ Kurator</h4>
+                        <p>Jobbe med museer, gallerier og kulturinstitusjoner.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="info-box">
+                    <h4>📋 Fakta om programmet</h4>
+                    <ul class="info-list">
+                        <li>3 års studieløp</li>
+                        <li>Studiekompetanse</li>
+                        <li>Porteføljebygging</li>
+                        <li>Praksis i designbyrå</li>
+                        <li>Profesjonelt utstyr</li>
+                        <li>Små klasser (maks 18 elever)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🏆 Våre resultater</h4>
+                    <ul class="info-list">
+                        <li>97% fullfører programmet</li>
+                        <li>88% kommer inn på kunstutdanning</li>
+                        <li>70% får jobb i kreativ bransje</li>
+                        <li>15+ utstillinger årlig</li>
+                        <li>Flere nasjonale priser</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🛠️ Vårt utstyr</h4>
+                    <ul class="info-list">
+                        <li>iMac Pro og Wacom-tablets</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>3D-printere og laser-cutter</li>
+                        <li>Profesjonelt fotoutstyr</li>
+                        <li>Arkitekturmodell-verksted</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>👩‍🎨 Våre lærere</h4>
+                    <ul class="info-list">
+                        <li>Utdannet fra kunstakademier</li>
+                        <li>Erfaring fra designbransjen</li>
+                        <li>Praktiserende kunstnere</li>
+                        <li>Oppdatert på nye trender</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>🤝 Samarbeidspartnere</h4>
+                    <ul class="info-list">
+                        <li>Oslo National Academy of the Arts</li>
+                        <li>Bergen Academy of Art and Design</li>
+                        <li>Lokale designbyråer</li>
+                        <li>Norske arkitektkontor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="apply-section">
+            <h3>Klar for å uttrykke din kreativitet?</h3>
+            <p>Kunst, design og arkitektur på Skogvika VGS gir deg alle verktøy du trenger for en suksessfull karriere innen kreative fag.</p>
+            <a href="soknad.html" class="btn btn-primary" style="background: white; color: #28a745; padding: 1rem 2rem; font-size: 1.2rem;">
+                Søk opptak nå
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Kontakt programmet</h4>
+                <p>📧 kunst@skogvika.vgs.no</p>
+                <p>📞 22 34 56 82</p>
+                <p>👩‍🎨 Avdelingsleder: Maria Kreativitet</p>
+            </div>
+            <div class="footer-section">
+                <h4>Relaterte lenker</h4>
+                <ul>
+                    <li><a href="it-program.html">IT-programmet</a></li>
+                    <li><a href="realfag.html">Realfag-programmet</a></li>
+                    <li><a href="index.html">Tilbake til hovedsiden</a></li>
+                    <li><a href="404.html">Søknadsskjema</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Skogvika Videregående Skole - Kunst, design og arkitektur</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

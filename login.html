@@ -3,46 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logg inn</title>
+    <title>Logg inn | Skogvika VGS</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Spesielle stiler for login-siden */
+        .login-container {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .login-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+        }
+
+        .login-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .login-subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .login-form {
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #28a745;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder {
+            color: #adb5bd;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(40, 167, 69, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .user-type-selector {
+            display: flex;
+            margin-bottom: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 0.5rem;
+        }
+
+        .user-type-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #6c757d;
+        }
+
+        .user-type-btn.active {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            color: #20c997;
+        }
+
+        .divider {
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            color: #6c757d;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+        }
+
+        .divider span {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .quick-access {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .quick-btn {
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            text-decoration: none;
+            color: #6c757d;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .quick-btn:hover {
+            border-color: #28a745;
+            color: #28a745;
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Responsivt design */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .login-title {
+                font-size: 1.5rem;
+            }
+
+            .quick-access {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Helgomega</h1>
-        <nav>
-            <!-- Meny med lenker -->
-            <ul>
-                <li><a href="index.html">Hjem</a></li>
-                <li><a href="login.html">Logg inn</a></li>
-                <li><a href="minside.html">Min side</a></li>
-            </ul>
-        </nav>
-
-        <div id="bruker-info" class="bruker-info">
-            <!-- Brukernavn og logg ut knapp oppe i hjørne -->
-            <div id="brukernavn-visning" class="brukernavn-visning"></div>
-            <button id="logoutButton" class="orange-button" style="display: none;">Logg ut</button>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Skogvika VGS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hjem</a></li>
+                    <li><a href="index.html#programmer">Studieprogram</a></li>
+                    <li><a href="index.html#om-skolen">Om skolen</a></li>
+                    <li><a href="soknad.html">Søknad</a></li>
+                    <li><a href="login.html" class="active">Logg inn</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Form for innlogging -->
-        <h2>Logg inn</h2>
-        <form id="loginForm">
-            <label for="username">Brukernavn:</label>
-            <input type="text" id="username" required>
-            
-            <label for="password">Passord:</label>
-            <input type="password" id="password" required>
+    <main class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">S</div>
+                <h1 class="login-title">Velkommen tilbake!</h1>
+                <p class="login-subtitle">Logg inn på din Skogvika VGS-konto</p>
+            </div>
 
-            <button type="submit">Logg inn</button>
-        </form>
+            <div class="user-type-selector">
+                <button class="user-type-btn active" onclick="setUserType('elev')">
+                    👨‍🎓 Elev
+                </button>
+                <button class="user-type-btn" onclick="setUserType('ansatt')">
+                    👨‍🏫 Ansatt
+                </button>
+            </div>
 
-        <!-- Vis feilmelding -->
-        <p id="loginError" style="color: red;"></p>
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">Brukernavn</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="form-input" 
+                        placeholder="Skriv inn ditt brukernavn"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Passord</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="Skriv inn ditt passord"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    Logg inn
+                </button>
+            </form>
+
+            <div class="forgot-password">
+                <a href="404.html">Glemt passord?</a>
+            </div>
+
+            <div class="divider">
+                <span>eller</span>
+            </div>
+
+            <div class="quick-access">
+                <a href="404.html" class="quick-btn">
+                    📚 Its Learning
+                </a>
+                <a href="404.html" class="quick-btn">
+                    📧 E-post
+                </a>
+                <a href="404.html" class="quick-btn">
+                    📅 Timeplan
+                </a>
+                <a href="404.html" class="quick-btn">
+                    👥 MinElev
+                </a>
+            </div>
+        </div>
     </main>
 
-    <!-- Koble til script.js -->
-    <script src="script.js"></script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Trenger du hjelp?</h4>
+                <p>📞 IT-support: 22 34 56 79</p>
+                <p>✉️ support@skogvika.vgs.no</p>
+                <p>🕒 Åpent: 08:00-16:00</p>
+            </div>
+            <div class="footer-section">
+                <h4>Viktige lenker</h4>
+                <ul>
+                    <li><a href="index.html">Tilbake til forsiden</a></li>
+                    <li><a href="404.html">Elevhåndbok</a></li>
+                    <li><a href="404.html">IT-reglement</a></li>
+                    <li><a href="404.html">Personvernerklæring</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Skogvika Videregående Skole. Sikker innlogging.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentUserType = 'elev';
+
+        // Bytt mellom elev og ansatt
+        function setUserType(type) {
+            currentUserType = type;
+            
+            // Oppdater knapper
+            document.querySelectorAll('.user-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Oppdater placeholder-tekst
+            const usernameInput = document.getElementById('username');
+            if (type === 'elev') {
+                usernameInput.placeholder = 'Skriv inn ditt brukernavn';
+            } else {
+                usernameInput.placeholder = 'Skriv inn ditt ansattnummer';
+            }
+        }
+
+        // Håndter innlogging
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+
+            // Skjul tidligere meldinger
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            // Validering
+            if (!username || !password) {
+                showError('Vennligst fyll ut alle feltene.');
+                return;
+            }
+
+            // Vis loading
+            loginBtn.innerHTML = '<span class="loading"></span> Logger inn...';
+            loginBtn.disabled = true;
+
+            // Send innloggingsforespørsel til serveren
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    brukernavn: username,
+                    passord: password,
+                    rolle: currentUserType
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showSuccess(`${data.melding} Omdirigerer...`);
+                    
+                    // Lagre innlogging i session storage
+                    sessionStorage.setItem('loggedInUser', JSON.stringify({
+                        username: data.brukernavn,
+                        userType: data.rolle,
+                        loginTime: new Date().toISOString()
+                    }));
+
+                    // Omdiriger til hovedsiden etter 2 sekunder
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    showError(data.error || 'Innlogging feilet. Prøv igjen.');
+                }
+            })
+            .catch(error => {
+                console.error('Innloggingsfeil:', error);
+                showError('Kunne ikke koble til serveren. Sjekk at serveren kjører på port 3000.');
+            })
+            .finally(() => {
+                // Tilbakestill knapp
+                loginBtn.innerHTML = 'Logg inn';
+                loginBtn.disabled = false;
+            });
+        });
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            // Auto-skjul etter 5 sekunder
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        // Sjekk om bruker allerede er logget inn
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = sessionStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                showSuccess(`Du er allerede logget inn som ${user.username}. Omdirigerer...`);
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }
+
+            console.log('Skogvika VGS Login-side lastet!');
+            console.log('Kobler til database på http://localhost:3000');
+            console.log('Database-brukere:');
+            console.log('Elever: test/test, ole.nordmann/passord123, kari.hansen/elev2024');
+            console.log('Ansatte: admin/admin, lars.larsen/sikker123, anne.berg/lærer2024');
+        });
+
+        // Enter-tast funksjonalitet
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.activeElement.tagName !== 'BUTTON') {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
 </body>
 </html>

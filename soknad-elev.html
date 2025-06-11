@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Søk opptak | Skogvika VGS</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .application-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+        }
+
+        .form-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-box h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-box {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .submit-btn {
+            background: white;
+            color: #28a745;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .portfolio-upload {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 2px dashed #e9ecef;
+            border-radius: 8px;
+            text-align: center;
+            background: #fafafa;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Skogvika VGS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Hjem</a></li>
+                    <li><a href="index.html#programmer">Studieprogram</a></li>
+                    <li><a href="index.html#om-skolen">Om skolen</a></li>
+                    <li><a href="soknad.html" class="active">Søknad</a></li>
+                    <li><a href="login.html" id="loginNavLink">Logg inn</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="application-hero">
+        <h1>Søknad om opptak</h1>
+        <p>Fyll ut skjemaet for å søke opptak til Skogvika VGS</p>
+    </section>
+
+    <main class="form-container">
+        <div id="message" class="message"></div>
+
+        <form id="soknadForm">
+            <!-- Personlig informasjon -->
+            <div class="form-box">
+                <h3>📋 Personlig informasjon</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Fornavn <span class="required">*</span></label>
+                        <input type="text" id="firstName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Etternavn <span class="required">*</span></label>
+                        <input type="text" id="lastName" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Fødselsdato <span class="required">*</span></label>
+                        <input type="date" id="birthDate" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Telefonnummer <span class="required">*</span></label>
+                        <input type="tel" id="phone" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">E-postadresse <span class="required">*</span></label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Adresse <span class="required">*</span></label>
+                    <input type="text" id="address" class="form-input" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Postnummer <span class="required">*</span></label>
+                        <input type="text" id="postalCode" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Poststed <span class="required">*</span></label>
+                        <input type="text" id="city" class="form-input" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Studieprogram -->
+            <div class="form-box">
+                <h3>🎓 Studieprogram</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Hvilket program ønsker du å søke på? <span class="required">*</span></label>
+                    <select id="program" class="form-select" required>
+                        <option value="">-- Velg studieprogram --</option>
+                        <option value="it">💻 Informasjonsteknologi</option>
+                        <option value="realfag">🔬 Realfag</option>
+                        <option value="kunst">🎨 Kunst, design og arkitektur</option>
+                    </select>
+                </div>
+
+                <div id="portfolioUpload" class="portfolio-upload">
+                    <p>🎨 Portefølje kreves for kunst og design</p>
+                    <input type="file" id="portfolio" accept=".pdf,.zip">
+                    <small>PDF eller ZIP-fil, maks 20MB</small>
+                </div>
+            </div>
+
+            <!-- Motivasjon -->
+            <div class="form-box">
+                <h3>💭 Motivasjon</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Hvorfor ønsker du å gå på Skogvika VGS? <span class="required">*</span></label>
+                    <textarea id="motivation" class="form-textarea" required 
+                        placeholder="Fortell oss om dine mål og hvorfor du ønsker å studere her..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Interesser og hobbyer</label>
+                    <textarea id="interests" class="form-textarea" 
+                        placeholder="Fortell oss om dine interesser utenfor skolen..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Fremtidsplaner</label>
+                    <textarea id="futureGoals" class="form-textarea" 
+                        placeholder="Hva ønsker du å gjøre etter videregående?"></textarea>
+                </div>
+            </div>
+
+            <!-- Referanser -->
+            <div class="form-box">
+                <h3>👥 Referanser (valgfritt)</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Navn på referanse</label>
+                    <input type="text" id="referenceName" class="form-input" placeholder="f.eks. lærer eller mentor">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Telefon til referanse</label>
+                        <input type="tel" id="referencePhone" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-post til referanse</label>
+                        <input type="email" id="referenceEmail" class="form-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Send inn -->
+            <div class="submit-box">
+                <h3>🚀 Send inn søknaden</h3>
+                <p>Kontroller at all informasjon er riktig før du sender inn.</p>
+                <button type="button" id="sendSoknad" class="submit-btn">
+                    Send søknad
+                </button>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                    Ved å sende inn søknaden godtar du våre vilkår og betingelser.
+                </p>
+            </div>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Enkel JavaScript som garantert fungerer
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Søknadsskjema lastet');
+            
+            const sendKnapp = document.getElementById('sendSoknad');
+            const programSelect = document.getElementById('program');
+            const portfolioUpload = document.getElementById('portfolioUpload');
+            const messageDiv = document.getElementById('message');
+            
+            // Vis portefølje for kunst
+            programSelect.addEventListener('change', function() {
+                if (this.value === 'kunst') {
+                    portfolioUpload.style.display = 'block';
+                } else {
+                    portfolioUpload.style.display = 'none';
+                }
+            });
+            
+            // Send søknad når knappen klikkes
+            sendKnapp.addEventListener('click', function() {
+                console.log('Send søknad knappen ble klikket!');
+                sendSoknad();
+            });
+            
+            function sendSoknad() {
+                // Skjul tidligere meldinger
+                messageDiv.style.display = 'none';
+                
+                // Samle data fra skjemaet
+                const data = {
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    birthDate: document.getElementById('birthDate').value,
+                    phone: document.getElementById('phone').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    address: document.getElementById('address').value.trim(),
+                    postalCode: document.getElementById('postalCode').value.trim(),
+                    city: document.getElementById('city').value.trim(),
+                    program: document.getElementById('program').value,
+                    motivation: document.getElementById('motivation').value.trim(),
+                    interests: document.getElementById('interests').value.trim(),
+                    futureGoals: document.getElementById('futureGoals').value.trim(),
+                    referenceName: document.getElementById('referenceName').value.trim(),
+                    referencePhone: document.getElementById('referencePhone').value.trim(),
+                    referenceEmail: document.getElementById('referenceEmail').value.trim()
+                };
+                
+                console.log('Søknadsdata:', data);
+                
+                // Sjekk påkrevde felt
+                if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.program || !data.motivation) {
+                    visMessage('❌ Vennligst fyll ut alle påkrevde felt (merket med rød stjerne).', 'error');
+                    return;
+                }
+                
+                // Disable knappen mens vi sender
+                sendKnapp.disabled = true;
+                sendKnapp.textContent = 'Sender...';
+                
+                // Send til server
+                fetch('http://localhost:3000/soknad', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    console.log('Server respons:', response);
+                    return response.json();
+                })
+                .then(result => {
+                    console.log('Server resultat:', result);
+                    if (result.success) {
+                        visMessage(`
+                            ✅ <strong>Søknaden din er sendt!</strong><br><br>
+                            📋 Referansenummer: ${result.referenceNumber}<br>
+                            📧 Bekreftet til: ${data.email}<br>
+                            ⏰ Du vil få svar innen 2 uker.
+                        `, 'success');
+                        
+                        // Nullstill skjemaet
+                        document.getElementById('soknadForm').reset();
+                        portfolioUpload.style.display = 'none';
+                        
+                    } else {
+                        visMessage('❌ Feil: ' + (result.error || 'Ukjent feil'), 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Feil:', error);
+                    visMessage('❌ Kunne ikke sende søknad. Sjekk at serveren kjører på port 3000.', 'error');
+                })
+                .finally(() => {
+                    // Aktiver knappen igjen
+                    sendKnapp.disabled = false;
+                    sendKnapp.textContent = 'Send søknad';
+                });
+            }
+            
+            function visMessage(tekst, type) {
+                messageDiv.innerHTML = tekst;
+                messageDiv.className = 'message ' + type;
+                messageDiv.style.display = 'block';
+                messageDiv.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Test server tilkobling ved oppstart
+            fetch('http://localhost:3000/')
+                .then(response => response.text())
+                .then(data => {
+                    console.log('✅ Server tilkoblet:', data);
+                })
+                .catch(error => {
+                    console.warn('⚠️ Server ikke tilgjengelig:', error);
+                    visMessage('⚠️ Serveren er ikke tilgjengelig. Start serveren med "node server.js"', 'error');
+                });
+        });
+    </script>
+</body>
+</html>
