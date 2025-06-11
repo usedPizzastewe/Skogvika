@@ -1,231 +1,372 @@
-/* Stil for heile sida */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
     color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
 }
 
-/* Toppen av sida */
+/* Header og navigasjon */
 header {
-    background-color: #005bbb;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Menyen */
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+    display: flex;
+    gap: 2rem;
 }
 
-/* Menyvalg på rekke */
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-/* Lenkene i menyen */
-nav ul li a {
-    color: white;
+nav a {
     text-decoration: none;
-    font-weight: bold;
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
 }
 
-/* Hovedinnhald i midten */
-main {
+nav a:hover, nav a.active {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6rem 2rem;
     text-align: center;
-    padding: 50px;
 }
 
-/* Intro-boksen */
-.intro {
-    background-color: #ffa500;
-    padding: 30px;
-    border-radius: 10px;
-    color: white;
-    font-size: 1.2em;
-}
-
-/* Skjema-stil */
-form {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
-
-/* Etikett over input */
-label {
-    display: block;
-    margin-bottom: 5px;
-    margin-top: 5 px;
-    padding-top: 20px;
-    font-weight: bold;
-}
-
-/* Ekstra mellomrom for passord */
-#password-label {
-    margin-top: 15px;
-}
-
-/* Input og knapp */
-input, button {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-/* Knapp utforming */
-button {
-    background-color: #ffa500;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* Knapp når musa er over */
-button:hover {
-    background-color: #cc8400;
-}
-
-/* Fjerner footer */
-footer {
-    display: none;
-}
-
-/* Oransje knapp */
-.orange-button {
-    background-color: #ffa500;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* Knapp når musa er over */
-.orange-button:hover {
-    background-color: #cc8400;
-}
-
-/* Bilde av bil */
-.bil-bilde {
-    width: 300px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-/* Grid for bilvisning */
-.bil-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Stil på ein enkelt bil */
-.bil {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-    max-width: 400px;
-    font-size: 0.9em;
-}
-
-/* Løfter kort når du peker */
-.bil:hover {
-    transform: translateY(-4px);
-}
-
-/* Tittel på bilkort */
-.bil h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.1em;
-    color: #005bbb;
-}
-
-/* Tekst i bilkort */
-.bil p {
-    margin: 4px 0;
-}
-
-/* Bilbilde i kort */
-.bil-bilde {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-/* Container rundt bilkort */
-#bil-container {
-    padding: 20px;
-    max-width: 1200px;
+.hero-content {
+    max-width: 800px;
     margin: 0 auto;
 }
 
-/* Overskrift "Våre biler" */
-.våre-biler-container {
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #fff, #f8f9fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
     display: flex;
+    gap: 1rem;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
+    flex-wrap: wrap;
 }
 
-/* Stil på overskrifttekst */
-.våre-biler-container h2 {
-    font-size: 2rem;
-    color: #333;
-    margin: 0;
-}
-
-/* Visning av innlogga brukar */
-.bruker-info {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-/* Navn oppe til høgre */
-#brukernavn-visning {
-    font-weight: bold;
-    color: white;
-    background-color: #005bbb;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-/* Logg ut-knapp */
-#logoutButton {
-    margin-top: 5px;
-    padding: 4px 10px;
-    font-size: 0.8em;
-    border-radius: 5px;
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
     display: inline-block;
-    width: auto;
-    max-width: 150px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content */
+main {
+    background: white;
+    min-height: 50vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* Programkort */
+.programs-section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.program-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.program-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.program-card:nth-child(1) .program-icon {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.program-card:nth-child(2) .program-icon {
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+}
+
+.program-card:nth-child(3) .program-icon {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+}
+
+.program-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.program-card p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.program-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.program-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.program-features li:before {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Info sections */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.info-card {
+    text-align: center;
+    padding: 2rem;
+}
+
+.info-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 2rem 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: #28a745;
+}
+
+.footer-section p, .footer-section li {
+    color: #bdc3c7;
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #28a745;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #34495e;
+    color: #95a5a6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animasjoner */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.program-card, .info-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.program-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.program-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

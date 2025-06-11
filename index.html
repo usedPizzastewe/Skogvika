@@ -3,44 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helgomega</title>
+    <title>Skogvika Videregående Skole</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Helgomega</h1>
-        <nav>
-            <!-- Meny med lenker -->
-            <ul>
-                <li><a href="index.html">Hjem</a></li>
-                <li><a href="login.html">Logg inn</a></li>
-                <li><a href="minside.html">Min side</a></li>
-            </ul>
-        </nav>
-
-        <div id="bruker-info" class="bruker-info">
-            <!-- Visning av brukernavn -->
-            <div id="brukernavn-visning" class="brukernavn-visning"></div>
-            <!-- Logg ut-knapp, kommer når bruker er logget inn -->
-            <button id="logoutButton" class="orange-button right-align" style="display: none;">Logg ut</button>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <h1>Skogvika VGS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hjem" class="active">Hjem</a></li>
+                    <li><a href="#programmer">Studieprogram</a></li>
+                    <li><a href="#om-skolen">Om skolen</a></li>
+                    <li><a href="#opptak">Opptak</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
+    <section class="hero" id="hjem">
+        <div class="hero-content">
+            <h2>Velkommen til Skogvika VGS</h2>
+            <p>Din fremtid begynner her! Opplev moderne utdanning i inspirerende omgivelser med engasjerte lærere og et sterkt miljø.</p>
+            <div class="cta-buttons">
+                <a href="#programmer" class="btn btn-primary">Utforsk våre program</a>
+                <a href="#opptak" class="btn btn-secondary">Søk opptak</a>
+            </div>
+        </div>
+    </section>
+
     <main>
-        <!-- Velkommen til nettsiden -->
-        <section class="intro">
-            <h2>Velkommen til Helgomega</h2>
-            <p>Vi selger biler til gode priser.</p>
-        </section>
+        <div class="container">
+            <section class="programs-section" id="programmer">
+                <h2 class="section-title">Våre Studieprogram</h2>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-icon">💻</div>
+                        <h3>Informasjonsteknologi</h3>
+                        <p>Bli ekspert på fremtidens teknologi med vårt moderne IT-program</p>
+                        <ul class="program-features">
+                            <li>Programmering og utvikling</li>
+                            <li>Nettverksadministrasjon</li>
+                            <li>Cybersikkerhet</li>
+                            <li>Kunstig intelligens</li>
+                            <li>Moderne laboratorier</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Les mer</a>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-icon">🔬</div>
+                        <h3>Realfag</h3>
+                        <p>Utforsk naturvitenskapens spennende verden med praktiske eksperimenter</p>
+                        <ul class="program-features">
+                            <li>Fysikk og kjemi</li>
+                            <li>Biologi og geofag</li>
+                            <li>Matematikk R1/R2</li>
+                            <li>Forskningsprosjekter</li>
+                            <li>Universitet-forberedende</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Les mer</a>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-icon">🎨</div>
+                        <h3>Kunst, design og arkitektur</h3>
+                        <p>Utfold din kreativitet og utvikle dine kunstneriske ferdigheter</p>
+                        <ul class="program-features">
+                            <li>Digital design og multimedia</li>
+                            <li>Tegning og maleri</li>
+                            <li>3D-modellering</li>
+                            <li>Arkitektur og form</li>
+                            <li>Profesjonelle verksteder</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Les mer</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="om-skolen">
+                <h2 class="section-title">Hvorfor velge Skogvika VGS?</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">🏆</div>
+                        <h3>Høye karakterer</h3>
+                        <p>Våre elever oppnår konsekvent bedre resultater enn landsgjennomsnittet og kommer godt forberedt inn på universitetet.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">👥</div>
+                        <h3>Sterkt miljø</h3>
+                        <p>Et inkluderende og trygt miljø hvor alle blir sett og støttet i sin utvikling, både faglig og personlig.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🚀</div>
+                        <h3>Moderne fasiliteter</h3>
+                        <p>Nye bygninger med state-of-the-art utstyr, moderne laboratorier og inspirerende læringsmiljøer.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <div class="våre-biler-container">
-        <h2>Våre biler</h2>
-    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Kontakt oss</h4>
+                <p>📍 Skogveien 42, 1234 Skogvika</p>
+                <p>📞 22 34 56 78</p>
+                <p>✉️ post@skogvika.vgs.no</p>
+            </div>
+            <div class="footer-section">
+                <h4>For elever</h4>
+                <ul>
+                    <li><a href="#">Timeplan</a></li>
+                    <li><a href="#">Its learning</a></li>
+                    <li><a href="#">Kantina</a></li>
+                    <li><a href="#">Elevrådet</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>For foreldre</h4>
+                <ul>
+                    <li><a href="#">MinElev</a></li>
+                    <li><a href="#">FAU</a></li>
+                    <li><a href="#">Arrangementer</a></li>
+                    <li><a href="#">Kontakt lærer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Følg oss</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Skogvika Videregående Skole. Alle rettigheter forbeholdt.</p>
+        </div>
+    </footer>
 
-    <div id="bil-container" class="bil-grid"></div>
-
-    <!-- Koble til script.js -->
     <script src="script.js"></script>
 </body>
 </html>
